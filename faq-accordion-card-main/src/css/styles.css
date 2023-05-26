@@ -1,0 +1,230 @@
+/*
+# Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+#### Text
+
+- Very dark desaturated blue: hsl(238, 29%, 16%)
+- Soft red: hsl(14, 88%, 65%)
+
+#### Gradient
+
+Background gradient:
+
+- Soft violet: hsl(273, 75%, 66%)
+- Soft blue: hsl(240, 73%, 65%)
+
+### Neutral
+
+#### Text
+
+- Very dark grayish blue: hsl(237, 12%, 33%)
+- Dark grayish blue: hsl(240, 6%, 50%)
+
+#### Dividers
+
+- Light grayish blue: hsl(240, 5%, 91%)
+
+## Typography
+
+### Body Copy
+
+- Font size: 12px
+
+### Font
+
+- Family: [Kumbh Sans](https://fonts.google.com/specimen/Kumbh+Sans)
+- Weights: 400, 700
+*/
+
+
+/*-------------ROOT------------*/
+
+:root{
+
+    /*text*/
+    --VeryDarkDesaturatedBlue: hsl(238, 29%, 16%);
+    --SoftRed: hsl(14, 88%, 65%);
+    /*gradient*/
+    --SoftViolet: hsl(273, 75%, 66%);
+    --SoftBlue: hsl(240, 73%, 65%);
+    /*text*/
+    --VeryDarkGrayishBlue: hsl(237, 12%, 33%);
+    --DarkGrayishBlue: hsl(240, 6%, 50%);
+    /*dividers*/
+    --LightGrayishBlue: hsl(240, 5%, 91%);
+}
+
+/*----------GLOBALS--------*/
+*{
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 62.5%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0deg, var(--SoftViolet) 0%, var(--SoftBlue) 100%);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+h1{
+    font-size: 3.6rem;
+    text-align: left;
+    width: 100%;
+}
+
+h2{
+    font-size: 1.8rem;
+}
+
+p, a{
+    font-size: 1.5rem;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+/*----------------CLASSES------------------*/
+
+.container{
+    background-color: #fff;
+    max-width: 60%;
+    margin: auto;
+
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 5rem;
+    overflow: hidden;
+}
+
+.bg-image{
+    position: relative;
+}
+
+.svg-box, .svg-woman{
+    position: absolute;
+    animation: floatingAnm 3s ease-in-out infinite;
+}
+
+.svg-box{
+    width: 15rem;
+    height: 15rem;
+    top: 35%;
+    z-index: 10;
+}
+
+.svg-woman{
+    top: 5%;
+    left: 0;
+    right: 0;
+}
+
+/*FAQ*/
+
+.faq-section{
+    display: grid;
+    place-items: center;
+    padding: 5rem;
+}
+
+.card{
+    border-bottom: 1px solid var(--LightGrayishBlue);
+}
+
+.card__title{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__arrow{
+    transition: transform .3s ease;
+}
+
+.card__click{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.card__content{
+    height: 0;
+    overflow: hidden;
+    transition: height .3s ease;
+}
+
+
+/*arrow rotation*/
+
+.rotate{
+    transform: rotate(180deg);
+    transition: transform .3s ease;
+}
+
+/*show card content*/
+
+.show__content{
+    height: 10rem;
+    transition: height .3s ease;
+}
+
+@keyframes floatingAnm {
+    50%{
+        transform: translateY(5rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 960px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        overflow: visible;
+        max-width: 80;
+    }
+
+    .svg-woman{
+        content:  url(/images/illustration-woman-online-mobile.svg);
+        top: -100%;
+        left: 0;
+        right: 0;
+    }
+
+    .svg-bg{
+        content: url(/images/bg-pattern-mobile.svg);
+        transform: translateY(50%);
+    }
+
+    .svg-box{
+        content: url();
+    }
+
+}
+
+@media (max-width: 480px) {
+    .container{
+        max-width: 100%;
+    }
+}
